@@ -1,13 +1,14 @@
 $('#search-form').on('click', 'button', function() {
   console.log('test');
   let imdbSearchMovie = {
-    "url": "https://imdb-api.com/en/API/SearchMovie/k_5yme52ms/",
+    "url": "https://imdb-api.com/en/API/AdvancedSearch/k_5yme52ms",
     "method": "GET",
     "timeout": 0,
   };
   let q = $('#search-input').val();
   console.log(q);
-  imdbSearchMovie.url += q;
+  let qParam = '?title=' + q;
+  imdbSearchMovie.url += qParam;
   console.log(imdbSearchMovie);
   $.ajax(imdbSearchMovie).done(function (response) {
     let responseArray = response.results;
