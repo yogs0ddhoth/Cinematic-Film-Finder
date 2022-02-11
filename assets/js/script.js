@@ -24,16 +24,17 @@ $('#search-form').on('click', 'button', function() {
       let imdbImage = responseArray[i].image;
       let imdbTitle = responseArray[i].title;
       
-      //* UNTESTED! PROBABLY BUGGY
-      let $card = $('<div><div>', {
+      //* IMAGE NOT RENDERING CORRECTLY: CHECK BOOTSTRAP
+      let $card = $('<div></div>', {
         'id': imbdId,
         'class': 'card col',
       }).appendTo('#results');
       $('<img>', {
-        'src': imdbImage,
+        'src': imdbImage.replace('original', '192x264'),
+        'class': 'card-img-top',
         'alt': imdbTitle,
       }).appendTo($card);
-      $('<h2><h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
+      $('<h2></h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
     }
      
      
