@@ -78,6 +78,7 @@ $('#search-form').on('click', 'button', function(event) {
       'alt': imdbTitle,
     }).appendTo($card);
     $('<h2></h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
+    $('<button type="button" class="btn-btn-primary" data-toggle="modal" data-target="#infoModal"></button>').text('Info').appendTo($card);
   }
 })
 
