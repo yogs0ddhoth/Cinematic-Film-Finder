@@ -1,7 +1,7 @@
 $('#search-form').on('click', 'button', function(event) {
   console.log('test');
   event.preventDefault();
-  let imdbSearchMovie = {
+  let imdbAdvancedSearch = {
     "url": "https://imdb-api.com/en/API/AdvancedSearch/k_5yme52ms",
     "method": "GET",
     "timeout": 0,
@@ -9,10 +9,10 @@ $('#search-form').on('click', 'button', function(event) {
   let q = $('#search-input').val();
   console.log(q);
   let qParam = '?title=' + q + '&title_type=feature,tv_movie,documentary';
-  imdbSearchMovie.url += qParam;
-  console.log(imdbSearchMovie);
+  imdbAdvancedSearch.url += qParam;
+  console.log(imdbAdvancedSearch);
   
-  // $.ajax(imdbSearchMovie).done(function (response) {
+  // $.ajax(imdbAdvancedSearch).done(function (response) {
   //   let responseArray = response.results;
   //   console.log(responseArray);
     
@@ -96,8 +96,23 @@ $('#results').on('click', $('.card'), function(event) {
   let targetId = targetEl.getAttribute('id');
   console.log(targetId);
   if (targetId == 'results') {
+    // returns the funciton if the proper elements are not clicked (i.e <div class="col">)
     return;
   } else {
     console.log('it worked!');
+
+    // call imdb youtube api using imdb id (found in .card div)
+    let imdbYouTubeTrailer = {
+      'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_5yme52ms/',
+      'method': 'GET',
+      'timeout': 0,
+    }
+    imdbYouTubeTrailer.url += targetId;
+    console.log(imdbYouTubeTrailer);
+
+    $.ajax(imdbYouTubeTrailer).done(function (response) {
+      let responseArray = response;
+      console.log(responseArray);
+    })
   }
 })
