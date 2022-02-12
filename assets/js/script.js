@@ -90,4 +90,14 @@ $('#search-form').on('click', 'button', function(event) {
 $('#results').on('click', $('.card'), function(event) {
   console.log('test');
   event.preventDefault();
+  let target = event.target;
+  let targetEl = target.closest('div[id]');
+  console.log(targetEl);
+  let targetId = targetEl.attr("id");
+  console.log(targetId);
+  if (targetId == 'results') {
+    return;
+  } else {
+    console.log('it worked!');
+  }
 })
