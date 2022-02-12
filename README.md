@@ -1,2 +1,2 @@
 # Project-1
-Repository for our yet unnamed film search engine.
+Repository for CineMatic, the Automatic Film Finder.
