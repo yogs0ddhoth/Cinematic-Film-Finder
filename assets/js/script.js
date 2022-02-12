@@ -93,7 +93,7 @@ $('#results').on('click', $('.card'), function(event) {
   let target = event.target;
   let targetEl = target.closest('div[id]');
   console.log(targetEl);
-  let targetId = targetEl.attr("id");
+  let targetId = targetEl.getAttribute('id');
   console.log(targetId);
   if (targetId == 'results') {
     return;
