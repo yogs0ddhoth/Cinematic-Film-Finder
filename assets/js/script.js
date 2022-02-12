@@ -22,7 +22,7 @@ $('#search-form').on('click', 'button', function(event) {
   //   localStorage.setItem(q, JSON.stringify(responseArray));
     
   //   //  Run through a for loop for rendering:
-  //   for (i = 0; i < 30; i++) {
+  //   for (i = 0; i < responseArray.length; i++) {
   //     // assign imdb id to image card as an id to be called with jquery
   //     let imbdId = responseArray[i].id;
 
@@ -54,7 +54,7 @@ $('#search-form').on('click', 'button', function(event) {
   // rendering functionality using local storage - for testing purposes
   let responseArray = JSON.parse(localStorage.getItem(q));
   //  Run through a for loop for rendering:
-  for (i = 0; i < 30; i++) {
+  for (i = 0; i < responseArray.length; i++) {
     // assign imdb id to image card as an id to be called with jquery
     let imbdId = responseArray[i].id;
 
