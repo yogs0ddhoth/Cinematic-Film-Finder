@@ -12,6 +12,8 @@ $('#search-form').on('click', 'button', function(event) {
   imdbAdvancedSearch.url += qParam;
   console.log(imdbAdvancedSearch);
   
+  // //* IMPORTANT: IF THIS SECTION IS COMMENTED OUT, AND THERE ARE NO FETCH RESPONSES IN LOCAL STORAGE
+  // // THE CODE WILL NOT RUN PROPERLY
   // $.ajax(imdbAdvancedSearch).done(function (response) {
   //   let responseArray = response.results;
   //   console.log(responseArray);
