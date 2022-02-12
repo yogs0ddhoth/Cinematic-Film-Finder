@@ -29,6 +29,8 @@ $('#search-form').on('click', 'button', function(event) {
       let imdbImage = responseArray[i].image;
       let imdbTitle = responseArray[i].title;
       
+      $('#results').empty();
+      
       let $col = $('<div></div>', {
         'class': 'col',
       }).appendTo($('#results'));
@@ -47,34 +49,34 @@ $('#search-form').on('click', 'button', function(event) {
   });
   
   
-  // // rendering functionality using local storage - for testing purposes
-  // let responseArray = JSON.parse(localStorage.getItem(q));
-  // //  Run through a for loop for rendering:
-  // for (i = 0; i < 30; i++) {
-  //   // assign imdb id to image card as an id to be called with jquery
-  //   let imbdId = responseArray[i].id;
+  // rendering functionality using local storage - for testing purposes
+  let responseArray = JSON.parse(localStorage.getItem(q));
+  //  Run through a for loop for rendering:
+  for (i = 0; i < 30; i++) {
+    // assign imdb id to image card as an id to be called with jquery
+    let imbdId = responseArray[i].id;
 
-  //   // render image with title, and year as a tag - styled as a card/thumbnail
-  //   let imdbDescrp = responseArray[i].description;
-  //   let imdbImage = responseArray[i].image;
-  //   let imdbTitle = responseArray[i].title;
+    // render image with title, and year as a tag - styled as a card/thumbnail
+    let imdbDescrp = responseArray[i].description;
+    let imdbImage = responseArray[i].image;
+    let imdbTitle = responseArray[i].title;
     
 
-  //   let $col = $('<div></div>', {
-  //     'class': 'col',
-  //   }).appendTo($('#results'));
+    let $col = $('<div></div>', {
+      'class': 'col',
+    }).appendTo($('#results'));
 
-  //   let $card = $('<div></div>', {
-  //     'id': imbdId,
-  //     'class': 'card h-100',
-  //   }).appendTo($col);
-  //   $('<img>', {
-  //     'src': imdbImage.replace('original', '192x264'),
-  //     'class': 'card-img-top',
-  //     'alt': imdbTitle,
-  //   }).appendTo($card);
-  //   $('<h2></h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
-  // }
+    let $card = $('<div></div>', {
+      'id': imbdId,
+      'class': 'card h-100',
+    }).appendTo($col);
+    $('<img>', {
+      'src': imdbImage.replace('original', '192x264'),
+      'class': 'card-img-top',
+      'alt': imdbTitle,
+    }).appendTo($card);
+    $('<h2></h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
+  }
 })
 
 
@@ -85,6 +87,7 @@ $('#search-form').on('click', 'button', function(event) {
 //  from: OMDBI - Rotten Tomatoes score
 //  
 
-$("#search-form").submit(function(event) {
+$('#results').on('click', $card, function(event) {
+  console.log('test');
   event.preventDefault();
-});
+})
