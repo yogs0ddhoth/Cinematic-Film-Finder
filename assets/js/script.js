@@ -75,7 +75,7 @@ $('#search-form').on('click', 'button', function(event) {
       'style': 'background-color: transparent'
     }).appendTo($col);
     $('<img>', {
-      'src': imdbImage.replace('original', '192x264'),
+      'src': imdbImage.replace('original', '480x660'),
       'class': 'card-img-top',
       'alt': imdbTitle,
     }).appendTo($card);
