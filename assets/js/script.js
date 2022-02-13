@@ -89,27 +89,44 @@ $('#search-form').on('click', 'button', function(event) {
 // genre
 
 // returned and rendered information:
-//  from: OMDBI - Rotten Tomatoes score
+//  from: OMDb - Rotten Tomatoes score
 //  
 
 $('#results').on('click', 'button', function(event) {
   console.log('test');
   let target = event.target;
   let targetEl = target.closest('div[id]');
-  console.log(targetEl);
   let targetId = targetEl.getAttribute('id');
-  console.log(targetId);
-  // call imdb youtube api using imdb id (found in .card div)
-    let imdbYouTubeTrailer = {
-      'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_5yme52ms/',
-      'method': 'GET',
-      'timeout': 0,
-    }
-    imdbYouTubeTrailer.url += targetId;
-    console.log(imdbYouTubeTrailer);
 
-    $.ajax(imdbYouTubeTrailer).done(function (response) {
-      let responseArray = response;
-      console.log(responseArray);
-    })
+  // call imdb youtube api using imdb id (found in .card div)
+  let imdbYouTubeTrailer = {
+    'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_5yme52ms/',
+    'method': 'GET',
+    'timeout': 0,
+  }
+  imdbYouTubeTrailer.url += targetId;
+  console.log(imdbYouTubeTrailer);
+  
+  $.ajax(imdbYouTubeTrailer).done(function (response) {
+    // use some other variable name 
+    let responseArray = response;
+    console.log(responseArray);
+    // use:
+      // *title
+      // *videoUrl
+  }).then(
+    // call omdb api
+    // assign result a variable and console log result
+    // use:
+    //  *Actors
+    //  *Director
+    //  *Genre
+    //  *Plot
+    //  *Rated
+    //  *Ratings <- returns array of imdbYouTubeTrailer, rotten tomatoes, and metacritic
+    //  *Released
+    //
+
+    // render in modal
+  ) 
 })
