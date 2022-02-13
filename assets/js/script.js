@@ -47,6 +47,7 @@ $('#search-form').on('click', 'button', function(event) {
   //       'alt': imdbTitle,
   //     }).appendTo($card);
   //     $('<h2></h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
+  //     $('<button type="button" class="btn-btn-primary" data-toggle="modal" data-target="#infoModal"></button>').text('Info').appendTo($card);
   //   }
   // });
   
@@ -98,18 +99,17 @@ $('#results').on('click', 'button', function(event) {
   console.log(targetEl);
   let targetId = targetEl.getAttribute('id');
   console.log(targetId);
-  
   // call imdb youtube api using imdb id (found in .card div)
-  let imdbYouTubeTrailer = {
-    'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_5yme52ms/',
-    'method': 'GET',
-    'timeout': 0,
-  }
-  imdbYouTubeTrailer.url += targetId;
-  console.log(imdbYouTubeTrailer);
+    let imdbYouTubeTrailer = {
+      'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_5yme52ms/',
+      'method': 'GET',
+      'timeout': 0,
+    }
+    imdbYouTubeTrailer.url += targetId;
+    console.log(imdbYouTubeTrailer);
 
-  $.ajax(imdbYouTubeTrailer).done(function (response) {
-    let responseArray = response;
-    console.log(responseArray);
-  })
+    $.ajax(imdbYouTubeTrailer).done(function (response) {
+      let responseArray = response;
+      console.log(responseArray);
+    })
 })
