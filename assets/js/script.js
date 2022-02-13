@@ -71,6 +71,7 @@ $('#search-form').on('click', 'button', function(event) {
     let $card = $('<div></div>', {
       'id': imbdId,
       'class': 'card h-100',
+      'style': 'background-color: transparent'
     }).appendTo($col);
     $('<img>', {
       'src': imdbImage.replace('original', '192x264'),
@@ -90,32 +91,25 @@ $('#search-form').on('click', 'button', function(event) {
 //  from: OMDBI - Rotten Tomatoes score
 //  
 
-$('#results').on('click', $('.card'), function(event) {
+$('#results').on('click', 'button', function(event) {
   console.log('test');
-  event.preventDefault();
   let target = event.target;
   let targetEl = target.closest('div[id]');
   console.log(targetEl);
   let targetId = targetEl.getAttribute('id');
   console.log(targetId);
-  if (targetId == 'results') {
-    // returns the funciton if the proper elements are not clicked (i.e <div class="col">)
-    return;
-  } else {
-    console.log('it worked!');
-
-    // call imdb youtube api using imdb id (found in .card div)
-    let imdbYouTubeTrailer = {
-      'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_5yme52ms/',
-      'method': 'GET',
-      'timeout': 0,
-    }
-    imdbYouTubeTrailer.url += targetId;
-    console.log(imdbYouTubeTrailer);
-
-    $.ajax(imdbYouTubeTrailer).done(function (response) {
-      let responseArray = response;
-      console.log(responseArray);
-    })
+  
+  // call imdb youtube api using imdb id (found in .card div)
+  let imdbYouTubeTrailer = {
+    'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_5yme52ms/',
+    'method': 'GET',
+    'timeout': 0,
   }
+  imdbYouTubeTrailer.url += targetId;
+  console.log(imdbYouTubeTrailer);
+
+  $.ajax(imdbYouTubeTrailer).done(function (response) {
+    let responseArray = response;
+    console.log(responseArray);
+  })
 })
