@@ -116,8 +116,6 @@ $('#results').on('click', 'button', function(event) {
     let omdbCall = 'https://www.omdbapi.com/?apikey=e51a32ad&i=' + targetId;
     let title = imdbYoutubeArray.title;
     let videoUrl = imdbYoutubeArray.videoUrl;
-    console.log(title);
-    console.log(imdbYoutubeArray);
 
     $.ajax({
       url: omdbCall,
@@ -128,6 +126,7 @@ $('#results').on('click', 'button', function(event) {
       let director = response.Director;
       let genre = response.Genre;
       let plot = response.Plot;
+      let poster = response.Poster;
       let rated = response.Rated;
       let ratings = response.Ratings;
       let released = response.Released;
@@ -138,13 +137,29 @@ $('#results').on('click', 'button', function(event) {
       let meta = ratings[2].Source;
       let metascore = ratings[2].Value;
       
-      console.log(rtscore);
-      console.log(actors);
+      let $modalBody = $('#m-body');
+      
+      $('#ModalLabel').empty();
+      $('#ModalLabel').text(title);
+      
+      $('<img>', {
+        'src': poster,
+        // 'class': ,
+        'alt': 'Poster',
+      }).appendTo($modalBody);
+      
+      let $cast = $('<div></div>', {
+        'id': 'cast',
+        // 'class': ,
+      }).appendTo($modalBody);
+
+      $('<p></p>').text(actors).appendTo($cast);
+      $('<p></p>').text(director).appendTo($cast);
+
+      $('<p></p>').text(genre)
+
+      
+
     });
-  }
-
-    //
-
-    // render in modal
-  ) 
+  }) 
 })
