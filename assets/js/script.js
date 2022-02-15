@@ -2,7 +2,7 @@ $('#search-form').on('click', 'button', function(event) {
   console.log('test');
   event.preventDefault();
   let imdbAdvancedSearch = {
-    "url": "https://imdb-api.com/en/API/AdvancedSearch/k_5yme52ms",
+    "url": "https://imdb-api.com/en/API/AdvancedSearch/k_8ptc1hgr",
     "method": "GET",
     "timeout": 0,
   };
