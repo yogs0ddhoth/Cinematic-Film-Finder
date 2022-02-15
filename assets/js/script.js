@@ -106,22 +106,37 @@ $('#results').on('click', 'button', function(event) {
   
   $.ajax(imdbYouTubeTrailer).done(function (response) {
     // use some other variable name 
-    let responseArray = response;
-    console.log(responseArray);
-    // use:
-      // *title
-      // *videoUrl
-  }).then(
-    // call omdb api
-    // assign result a variable and console log result
-    // use:
-    //  *Actors
-    //  *Director
-    //  *Genre
-    //  *Plot
-    //  *Rated
-    //  *Ratings <- returns array of imdbYouTubeTrailer, rotten tomatoes, and metacritic
-    //  *Released
+   let imdbYoutubeArray = response;
+   console.log(imdbYoutubeArray);
+  
+
+  })
+  .then(function(){
+    let omdbCall = 'https://www.omdbapi.com/?apikey=e51a32ad&i=' + targetId;
+    let title = imdbYoutubeArray.title;
+    let videoUrl = imdbYoutubeArray.videoUrl;
+
+    $.ajax({
+      url: omdbCall,
+      method: 'GET',
+    }).then(function (response) {
+      console.log(response);
+      let actors = response.Actors;
+      let director = response.Director;
+      let genre = response.Genre;
+      let plot = response.Plot;
+      let rated = response.Rated;
+      let ratings = response.Ratings;
+      let released = response.Released;
+      let imdb = response.ratings[0].source;
+      let imdbscore = response.ratings[0].value;
+      let rt = response.ratings[1].source;
+      let rtscore = response.ratings[1].value;
+      let meta = response.ratings[2].source;
+      let metascore = response.ratings[2].value;
+    });
+  }
+
     //
 
     // render in modal
