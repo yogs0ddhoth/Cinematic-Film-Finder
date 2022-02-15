@@ -97,7 +97,7 @@ $('#results').on('click', 'button', function(event) {
 
   // call imdb youtube api using imdb id (found in .card div)
   let imdbYouTubeTrailer = {
-    'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_5yme52ms/',
+    'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_8ptc1hgr/',
     'method': 'GET',
     'timeout': 0,
   }
@@ -108,13 +108,16 @@ $('#results').on('click', 'button', function(event) {
     // use some other variable name 
    let imdbYoutubeArray = response;
    console.log(imdbYoutubeArray);
-  
+   return imdbYoutubeArray;
 
   })
-  .then(function(){
+
+  .then(function(imdbYoutubeArray){
     let omdbCall = 'https://www.omdbapi.com/?apikey=e51a32ad&i=' + targetId;
     let title = imdbYoutubeArray.title;
     let videoUrl = imdbYoutubeArray.videoUrl;
+    console.log(title);
+    console.log(imdbYoutubeArray);
 
     $.ajax({
       url: omdbCall,
@@ -128,12 +131,15 @@ $('#results').on('click', 'button', function(event) {
       let rated = response.Rated;
       let ratings = response.Ratings;
       let released = response.Released;
-      let imdb = response.ratings[0].source;
-      let imdbscore = response.ratings[0].value;
-      let rt = response.ratings[1].source;
-      let rtscore = response.ratings[1].value;
-      let meta = response.ratings[2].source;
-      let metascore = response.ratings[2].value;
+      let imdb = ratings[0].Source;
+      let imdbscore = ratings[0].Value;
+      let rt = ratings[1].Source;
+      let rtscore = ratings[1].Value;
+      let meta = ratings[2].Source;
+      let metascore = ratings[2].Value;
+      
+      console.log(rtscore);
+      console.log(actors);
     });
   }
 
