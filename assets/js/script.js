@@ -41,7 +41,7 @@ $('#search-form').on('click', 'button', function(event) {
   
       let $card = $('<div></div>', {
         'id': imbdId,
-        'class': 'card h-100',
+        'class': 'card h-100 border-0',
         'style': 'background-color: transparent'
       }).appendTo($col);
 
@@ -52,7 +52,7 @@ $('#search-form').on('click', 'button', function(event) {
       }).appendTo($card);
 
       $('<h2></h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
-      $('<button type="button" class="btn-btn-primary" data-toggle="modal" data-target="#infoModal"></button>').text('Info').appendTo($card);
+      $('<button type="button" class="btn btn-light align-items-end" data-toggle="modal" data-target="#infoModal"></button>').text('More Information').appendTo($card);
     }
   })
 
@@ -94,6 +94,7 @@ $('#results').on('click', 'button', function(event) {
   let target = event.target;
   let targetEl = target.closest('div[id]');
   let targetId = targetEl.getAttribute('id');
+  
 
   // call imdb youtube api using imdb id (found in .card div)
   let imdbYouTubeTrailer = {
