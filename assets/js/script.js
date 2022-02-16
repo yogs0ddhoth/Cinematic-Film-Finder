@@ -164,6 +164,7 @@ $('#results').on('click', 'button', function(event) {
       $('<p></p>').text(imdb + " " + imdbscore).appendTo($cast);
       $('<p></p>').text(rt + " " + rtscore).appendTo($cast);      
       $('<p></p>').text(meta + " " + metascore).appendTo($cast);
+      
       $('<iframe></iframe>', {
         'width': '650',
         'height': '315',
