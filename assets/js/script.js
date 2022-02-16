@@ -116,7 +116,8 @@ $('#results').on('click', 'button', function(event) {
   .then(function(imdbYoutubeArray){
     let omdbCall = 'https://www.omdbapi.com/?apikey=e51a32ad&i=' + targetId;
     let title = imdbYoutubeArray.title;
-    let videoUrl = imdbYoutubeArray.videoUrl;
+    let video = imdbYoutubeArray.videoUrl;
+    let videoUrl = video.replace('watch?v=', 'embed/')
 
     $.ajax({
       url: omdbCall,
@@ -141,7 +142,8 @@ $('#results').on('click', 'button', function(event) {
       let $modalBody = $('#m-body');
       let $modalFooter = $('#m-footer');
       
-      $('#ModalLabel').empty();
+      $modalBody.html('');
+      
       $('#ModalLabel').text(title);
       
       $('<img>', {
@@ -162,6 +164,13 @@ $('#results').on('click', 'button', function(event) {
       $('<p></p>').text(imdb + " " + imdbscore).appendTo($cast);
       $('<p></p>').text(rt + " " + rtscore).appendTo($cast);      
       $('<p></p>').text(meta + " " + metascore).appendTo($cast);
+      $('<iframe></iframe>', {
+        'width': '650',
+        'height': '315',
+        'src': videoUrl,
+        'title': 'Youtube video player',
+        // 'frameborder': '0',
+      }).appendTo($modalBody);
       
       // let $scores = $('<div></div>', {
       //   'id': 'scores',
