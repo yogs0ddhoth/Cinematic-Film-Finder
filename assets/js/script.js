@@ -2,7 +2,7 @@ $('#search-form').on('click', 'button', function(event) {
   console.log('test');
   event.preventDefault();
   let imdbAdvancedSearch = {
-    "url": "https://imdb-api.com/en/API/AdvancedSearch/k_8ptc1hgr",
+    "url": "https://imdb-api.com/en/API/AdvancedSearch/k_e2n529l5",
     "method": "GET",
     "timeout": 0,
   };
@@ -139,26 +139,41 @@ $('#results').on('click', 'button', function(event) {
       let metascore = ratings[2].Value;
       
       let $modalBody = $('#m-body');
+      let $modalFooter = $('#m-footer');
       
       $('#ModalLabel').empty();
       $('#ModalLabel').text(title);
       
       $('<img>', {
         'src': poster,
-        // 'class': ,
+        'class': 'col',
         'alt': 'Poster',
       }).appendTo($modalBody);
       
       let $cast = $('<div></div>', {
         'id': 'cast',
-        // 'class': ,
+        'class': 'col',
       }).appendTo($modalBody);
 
-      $('<p></p>').text(actors).appendTo($cast);
-      $('<p></p>').text(director).appendTo($cast);
+      $('<p></p>').text("Starring: " + actors).appendTo($cast);
+      $('<p></p>').text("Directed by: " + director).appendTo($cast);
+      $('<p></p>').text("Genre: " + genre).appendTo($cast);
+      $('<p></p>').text("Plot: " + plot).appendTo($cast);
+      $('<p></p>').text(imdb + " " + imdbscore).appendTo($cast);
+      $('<p></p>').text(rt + " " + rtscore).appendTo($cast);      
+      $('<p></p>').text(meta + " " + metascore).appendTo($cast);
+      
+      // let $scores = $('<div></div>', {
+      //   'id': 'scores',
+      //   'class': 'row',
+      //   'style': '',
+      // }).appendTo($modalFooter);
 
-      $('<p></p>').text(genre)
-
+      // $('<p></p>').text(imdb + " " + imdbscore).appendTo($scores);
+      
+      // $('<p></p>').text(rt + " " + rtscore).appendTo($scores);
+      
+      // $('<p></p>').text(meta + " " + metascore).appendTo($scores);
       
 
     });
