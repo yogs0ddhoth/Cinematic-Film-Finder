@@ -6,6 +6,8 @@ Tom Noonan, Ben Lin, Jonathan White, and Derrian Middleton
 
 # Example Page
 <img width="1901" alt="image" src="https://user-images.githubusercontent.com/95448858/154372332-4e2f84e1-0d1d-4c44-bcb9-c4a0751684e8.png">
+<img width="650" alt="image" src="https://user-images.githubusercontent.com/95448858/154372669-2f1cc3f1-9664-47c9-8fdd-7e965539604b.png">
+
 
 # Link to the deployed application
 https://tnoonan88.github.io/Cinematic-Film-Finder/
