@@ -56,7 +56,7 @@ $( document ).ready( function() {
 function renderCards(responseArray) {
   responseArray.forEach(movie => {
     let $col = $('<div></div>', {
-      'class': 'col-2',
+      'class': 'col-sm-12 col-lg-3 col-xl-2',
       'style': 'margin-top:50px'
     }).appendTo($('#results'));
 
