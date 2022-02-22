@@ -4,14 +4,18 @@ $( document ).ready( function() {
     "method": "GET",
     "timeout": 0,
   }
+  // ** UNUSED CODE **
+  // ------------------------------------------------------
   // let q = $('#search-input').val();
   // console.log(q);
   // let param = '?title=' + '&title_type=feature,tv_movie,documentary';
   // imdbAdvancedSearch.url += param;
   // console.log(imdbAdvancedSearch);
+  // --------------------------------------------------------
   if (sessionStorage.getItem('defaultResponse') !== null) {
     let responseArray = JSON.parse(sessionStorage.getItem('defaultResponse'));
 
+    // clear previous search
     $('#results').empty();
 
     renderCards(responseArray);
@@ -20,7 +24,7 @@ $( document ).ready( function() {
     imdbAdvancedSearch.url += param;
     $.ajax(imdbAdvancedSearch).done(function (response) {
       let responseArray = response.results;
-      console.log(responseArray);
+      // console.log(responseArray);
 
       sessionStorage.setItem('defaultResponse', JSON.stringify(responseArray))
 
@@ -28,8 +32,8 @@ $( document ).ready( function() {
       $('#results').empty();
 
       renderCards(responseArray);
-      // --------------------------------------------------------------------------------
-      // //  ** OBSOLETE ** see new function - renderCards()
+      // ** OBSOLETE ** see new function - renderCards()
+      // --------------------------------------------------------
       // for (i = 0; i < responseArray.length; i++) {
       //   // assign imdb id to image card as an id to be called with jquery
       //   let imbdId = responseArray[i].id;
@@ -59,6 +63,7 @@ $( document ).ready( function() {
       //   $('<h2></h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
       //   $('<button type="button" class="btn btn-light align-items-end" data-toggle="modal" data-target="#infoModal"></button>').text('More Information').appendTo($card);
       // }
+      // ------------------------------------------------------------------------------------
     })
   }
 })
@@ -67,7 +72,7 @@ $( document ).ready( function() {
 function renderCards(responseArray) {
   responseArray.forEach(movie => {
     let $col = $('<div></div>', {
-      'class': 'col-sm-12 col-lg-3 col-xl-2',
+      'class': 'col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2',
       'style': 'margin-top:50px'
     }).appendTo($('#results'));
 
@@ -128,8 +133,8 @@ $('#search-form').on('click', 'button', function(event) {
 
       renderCards(responseArray);
 
-      // --------------------------------------------------------------------------------
-      // //  ** OBSOLETE ** see new function - renderCards()
+      // ** OBSOLETE ** see new function - renderCards()
+      // ---------------------------------------------------------
       // for (i = 0; i < responseArray.length; i++) {
       //   // assign imdb id to image card as an id to be called with jquery
       //   let imbdId = responseArray[i].id;
@@ -159,14 +164,16 @@ $('#search-form').on('click', 'button', function(event) {
       //   $('<h2></h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
       //   $('<button type="button" class="btn btn-light align-items-end" data-toggle="modal" data-target="#infoModal"></button>').text('More Information').appendTo($card);
       // }
+      // ------------------------------------------------------------------------------------
     })
   }
   // ** OBSOLETE ** see sessionStorage boolean in lines 110-118
+  // -----------------------------------------------------------------
   // // rendering functionality using local storage - for testing purposes
   // let responseArray = JSON.parse(localStorage.getItem(q));
-  
-  // --------------------------------------------------------------------------------
-    // //  ** OBSOLETE ** see new function - renderCards()
+  // -----------------------------------------------------------
+  // //  ** OBSOLETE ** see new function - renderCards()
+  // -------------------------------------------------------
   // //  Run through a for loop for rendering:
   // for (i = 0; i < responseArray.length; i++) {
   //   // assign imdb id to image card as an id to be called with jquery
@@ -199,7 +206,7 @@ $('#search-form').on('click', 'button', function(event) {
 }) 
 
 $('#results').on('click', 'button', function(event) {
-  console.log('test');
+  // console.log('test');
   let target = event.target;
   let targetEl = target.closest('div[id]');
   let targetId = targetEl.getAttribute('id');
@@ -222,7 +229,11 @@ $('#results').on('click', 'button', function(event) {
 
   }).then(function(imdbYoutubeArray){
     let omdbCall = 'https://www.omdbapi.com/?apikey=e51a32ad&i=' + targetId;
+    
+    // ** Obsolete ** rendering bellow now uses template literals
+    // ---------------------------------
     // let title = imdbYoutubeArray.title;
+    // -----------------------------------------------------------
     let video = imdbYoutubeArray.videoUrl;
     let videoUrl = video.replace('watch?v=', 'embed/')
 
@@ -230,34 +241,49 @@ $('#results').on('click', 'button', function(event) {
       url: omdbCall,
       method: 'GET',
     }).done(function (response) {
-      console.log(response);
+      // console.log(response);
 
+      // ** Obsolete ** rendering bellow now uses template literals
+      // ------------------------------
       // let actors = response.Actors;
       // let director = response.Director;
       // let genre = response.Genre;
       // let plot = response.Plot;
       // let poster = response.Poster;
-      let rated = response.Rated;
+      // let rated = response.Rated;
+      // ------------------------------
       let ratings = response.Ratings;
       let ratingsArray = ratings.map(data => data);
+      
+      // ** UNUSED CODE **
+      // --------------------------------
       // let released = response.Released;
+      // ---------------------------------
+
+      // ** Obsolete ** see above ratingsArray
+      // ---------------------------------
       // let imdb = ratings[0].Source;
       // let imdbscore = ratings[0].Value;
       // let rt = ratings[1].Source;
       // let rtscore = ratings[1].Value;
       // let meta = ratings[2].Source;
       // let metascore = ratings[2].Value;
-      
+      // ----------------------------------
+
       let $modalBody = $('#m-body');
-      let $modalFooter = $('#m-footer');
       
+
+      // ** UNUSED CODE **
+      // ----------------------------------
+      // let $modalFooter = $('#m-footer');
+      // ---------------------------------
       $modalBody.html('');
 
       $('#ModalLabel').text(response.Title);
       
-      let poster = response.Poster;
+      
       $('<img>', {
-        'src': poster,
+        'src': `${response.Poster}`,
         'class': 'col',
         'alt': 'Poster',
       }).appendTo($modalBody);
@@ -273,9 +299,12 @@ $('#results').on('click', 'button', function(event) {
       $('<p></p>').text(`Genre: ${response.Genre}`).appendTo($info);
       $('<p></p>').text(`Plot: ${response.Plot}`).appendTo($info);
       
+      // ** Obsolete ** see below forEach()
+      // ----------------------------------------------------------
       // $('<p></p>').text(imdb + " " + imdbscore).appendTo($info);
       // $('<p></p>').text(rt + " " + rtscore).appendTo($info);      
       // $('<p></p>').text(meta + " " + metascore).appendTo($info);
+      // ----------------------------------------------------------
       ratingsArray.forEach(rating => {
         $('<p></p>').text(`${rating.Source}: ${rating.Value}`).appendTo($info);
       })
@@ -289,6 +318,8 @@ $('#results').on('click', 'button', function(event) {
         // 'frameborder': '0',
       }).appendTo($modalBody);
       
+      // ** UNUSED AND OBSOLETE ** 
+      // -------------------------------------------
       // let $scores = $('<div></div>', {
       //   'id': 'scores',
       //   'class': 'row',
@@ -300,7 +331,7 @@ $('#results').on('click', 'button', function(event) {
       // $('<p></p>').text(rt + " " + rtscore).appendTo($scores);
       
       // $('<p></p>').text(meta + " " + metascore).appendTo($scores);
-      
+      // --------------------------------------------
 
     });
   }) 
