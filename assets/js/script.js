@@ -5,7 +5,7 @@ $( document ).ready( function() {
     "timeout": 0,
   }
   // ** UNUSED CODE **
-  // ------------------------------------------------------
+  
   // let q = $('#search-input').val();
   // console.log(q);
   // let param = '?title=' + '&title_type=feature,tv_movie,documentary';
@@ -32,8 +32,9 @@ $( document ).ready( function() {
       $('#results').empty();
 
       renderCards(responseArray);
+      
       // ** OBSOLETE ** see new function - renderCards()
-      // --------------------------------------------------------
+      
       // for (i = 0; i < responseArray.length; i++) {
       //   // assign imdb id to image card as an id to be called with jquery
       //   let imbdId = responseArray[i].id;
@@ -134,7 +135,7 @@ $('#search-form').on('click', 'button', function(event) {
       renderCards(responseArray);
 
       // ** OBSOLETE ** see new function - renderCards()
-      // ---------------------------------------------------------
+      
       // for (i = 0; i < responseArray.length; i++) {
       //   // assign imdb id to image card as an id to be called with jquery
       //   let imbdId = responseArray[i].id;
@@ -168,12 +169,12 @@ $('#search-form').on('click', 'button', function(event) {
     })
   }
   // ** OBSOLETE ** see sessionStorage boolean in lines 110-118
-  // -----------------------------------------------------------------
+  
   // // rendering functionality using local storage - for testing purposes
   // let responseArray = JSON.parse(localStorage.getItem(q));
   // -----------------------------------------------------------
   // //  ** OBSOLETE ** see new function - renderCards()
-  // -------------------------------------------------------
+  
   // //  Run through a for loop for rendering:
   // for (i = 0; i < responseArray.length; i++) {
   //   // assign imdb id to image card as an id to be called with jquery
@@ -203,6 +204,7 @@ $('#search-form').on('click', 'button', function(event) {
   //   $('<h2></h2>').text(imdbTitle + ' ' + imdbDescrp).appendTo($card);
   //   $('<button type="button" class="btn-btn-primary" data-toggle="modal" data-target="#infoModal"></button>').text('Info').appendTo($card);
   // }
+  // ----------------------------------------------------------------------------
 }) 
 
 $('#results').on('click', 'button', function(event) {
@@ -230,8 +232,8 @@ $('#results').on('click', 'button', function(event) {
   }).then(function(imdbYoutubeArray){
     let omdbCall = 'https://www.omdbapi.com/?apikey=e51a32ad&i=' + targetId;
     
-    // ** Obsolete ** rendering bellow now uses template literals
-    // ---------------------------------
+    // ** Obsolete ** rendering now uses template literals
+    
     // let title = imdbYoutubeArray.title;
     // -----------------------------------------------------------
     let video = imdbYoutubeArray.videoUrl;
@@ -243,8 +245,8 @@ $('#results').on('click', 'button', function(event) {
     }).done(function (response) {
       // console.log(response);
 
-      // ** Obsolete ** rendering bellow now uses template literals
-      // ------------------------------
+      // ** Obsolete ** rendering now uses template literals
+      
       // let actors = response.Actors;
       // let director = response.Director;
       // let genre = response.Genre;
@@ -255,13 +257,13 @@ $('#results').on('click', 'button', function(event) {
       let ratings = response.Ratings;
       let ratingsArray = ratings.map(data => data);
       
-      // ** UNUSED CODE **
-      // --------------------------------
+      // ** UNUSED CODE **:
+      
       // let released = response.Released;
       // ---------------------------------
 
       // ** Obsolete ** see above ratingsArray
-      // ---------------------------------
+      
       // let imdb = ratings[0].Source;
       // let imdbscore = ratings[0].Value;
       // let rt = ratings[1].Source;
@@ -274,7 +276,7 @@ $('#results').on('click', 'button', function(event) {
       
 
       // ** UNUSED CODE **
-      // ----------------------------------
+      
       // let $modalFooter = $('#m-footer');
       // ---------------------------------
       $modalBody.html('');
@@ -300,7 +302,7 @@ $('#results').on('click', 'button', function(event) {
       $('<p></p>').text(`Plot: ${response.Plot}`).appendTo($info);
       
       // ** Obsolete ** see below forEach()
-      // ----------------------------------------------------------
+      
       // $('<p></p>').text(imdb + " " + imdbscore).appendTo($info);
       // $('<p></p>').text(rt + " " + rtscore).appendTo($info);      
       // $('<p></p>').text(meta + " " + metascore).appendTo($info);
@@ -319,7 +321,7 @@ $('#results').on('click', 'button', function(event) {
       }).appendTo($modalBody);
       
       // ** UNUSED AND OBSOLETE ** 
-      // -------------------------------------------
+      
       // let $scores = $('<div></div>', {
       //   'id': 'scores',
       //   'class': 'row',
@@ -331,7 +333,7 @@ $('#results').on('click', 'button', function(event) {
       // $('<p></p>').text(rt + " " + rtscore).appendTo($scores);
       
       // $('<p></p>').text(meta + " " + metascore).appendTo($scores);
-      // --------------------------------------------
+      // -----------------------------------------------------------
 
     });
   }) 
