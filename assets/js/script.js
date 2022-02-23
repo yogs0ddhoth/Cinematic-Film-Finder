@@ -1,6 +1,9 @@
 $( document ).ready( function() {
   let imdbAdvancedSearch = {
-    "url": "https://imdb-api.com/en/API/AdvancedSearch/k_e2n529l5",
+    // "url": "https://imdb-api.com/en/API/AdvancedSearch/k_e2n529l5",
+    //* Alternative API Key. Use if above key calls return null:
+    // "url": "https://imdb-api.com/en/API/AdvancedSearch/k_5yme52ms",
+    // ----------------------------------------------------------------
     "method": "GET",
     "timeout": 0,
   }
@@ -104,6 +107,9 @@ $('#search-form').on('click', 'button', function(event) {
   event.preventDefault();
   let imdbAdvancedSearch = {
     "url": "https://imdb-api.com/en/API/AdvancedSearch/k_e2n529l5",
+    //* Alternative API Key. Use if above key calls return null:
+    // "url": "https://imdb-api.com/en/API/AdvancedSearch/k_5yme52ms",
+    // ---------------------------------------------------------------
     "method": "GET",
     "timeout": 0,
   };
@@ -217,6 +223,9 @@ $('#results').on('click', 'button', function(event) {
   // to call imdb youtube api using imdb id (found in .card div)
   let imdbYouTubeTrailer = {
     'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_8ptc1hgr/',
+    //* Alternative API Key. Use if above key calls return null:
+    // 'url': 'https://imdb-api.com/en/API/YouTubeTrailer/k_5yme52ms/',
+    // -----------------------------------------------------------------
     'method': 'GET',
     'timeout': 0,
   }
