@@ -1,6 +1,6 @@
 $( document ).ready( function() {
   let imdbAdvancedSearch = {
-    // "url": "https://imdb-api.com/en/API/AdvancedSearch/k_e2n529l5",
+     "url": "https://imdb-api.com/en/API/AdvancedSearch/k_e2n529l5",
     //* Alternative API Key. Use if above key calls return null:
     // "url": "https://imdb-api.com/en/API/AdvancedSearch/k_5yme52ms",
     // ----------------------------------------------------------------
