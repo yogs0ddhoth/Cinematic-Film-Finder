@@ -10,37 +10,37 @@ $( document ).ready( function() {
  
   if (sessionStorage.getItem('defaultResponse') !== null) {
     // render from saved API call (see line 26)
-    let responseArray = JSON.parse(sessionStorage.getItem('defaultResponse'));
+    let defaultArray = JSON.parse(sessionStorage.getItem('defaultResponse'));
 
     // clear previous search
     $('#results').empty();
 
-    renderCards(responseArray);
+    renderCards(defaultArray);
   } else {
     let param = '?title=' + '&title_type=feature,tv_movie,documentary';
     imdbAdvancedSearch.url += param;
     $.ajax(imdbAdvancedSearch).done(function (response) {
-      let responseArray = response.results;
+      let defaultArray = response.results;
       
       // save call to session storage to save API calls
-      sessionStorage.setItem('defaultResponse', JSON.stringify(responseArray))
+      sessionStorage.setItem('defaultResponse', JSON.stringify(defaultArray))
 
       // clear previous search
       $('#results').empty();
 
-      renderCards(responseArray);
+      renderCards(defaultArray);
     })
   }
 })
 
 // rendering loop for cards
-function renderCards(responseArray) {
-  responseArray.forEach(movie => {
+function renderCards(array) {
+  array.forEach(movie => {
     let $col = $('<div></div>', {
       'class': 'col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2',
       'style': 'margin-top:50px'
     }).appendTo($('#results'));
-
+ 
     let $card = $('<div></div>', {
       'id': movie.id,
       'class': 'card h-100 border-0',
@@ -57,19 +57,21 @@ function renderCards(responseArray) {
     
     $('<button></button>', {
       'type': "button",
-      'class': "btn btn-light align-items-end",
+      'class': "btn btn-light mt-auto",
       'data-toggle': "modal",
       'data-target': "#infoModal",
     }).text('More Information').appendTo($card);
   });
 }
 
-$('#search-form').on('click', 'button', function(event) {
+$('#search-form').submit(function(event) {
+  console.log('test')
   event.preventDefault();
+  
   let imdbAdvancedSearch = {
-    // "url": "https://imdb-api.com/en/API/AdvancedSearch/k_e2n529l5",
+    "url": "https://imdb-api.com/en/API/AdvancedSearch/k_e2n529l5",
     //* Alternative API Key. Use if above key calls return null:
-    "url": "https://imdb-api.com/en/API/AdvancedSearch/k_5yme52ms",
+    // "url": "https://imdb-api.com/en/API/AdvancedSearch/k_5yme52ms",
     // ---------------------------------------------------------------
     "method": "GET",
     "timeout": 0,
